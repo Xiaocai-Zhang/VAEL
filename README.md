@@ -10,6 +10,24 @@ pip3 install -r requirements.txt
 ## Download DVTR Dataset
 Run the following commands to download data sets from Google cloud.
 ```
-gdown https://drive.google.com/uc?id=1orQYfoFxCz9sxG7WIjBLXHlTm8-7xhdh
-unzip data
+gdown https://drive.google.com/uc?id=132b9OeYS_lWbTjYuKXvmqIhPobCAREnq
+unzip DVRT
+rm DVTR.zip
+```
+## Download the trained generator
+Run the following commands to download the trained generator.
+```
+cd c-wdcgan-gp
+gdown https://drive.google.com/uc?id=1u8IDDmBvVMHenREeUkklGdhZ3RskqB7I
+unzip save_gen
+rm save_gen.zip
+```
+## Download the trained VAEL model
+Run the following commands to download the trained VAEL model.
+```
+cd ..
+cd models
+gdown https://drive.google.com/uc?id=1lXP8EOSj4HVGa3PAyExQ2h4MQKLZ9H1T
+unzip save
+rm save.zip
 ```
