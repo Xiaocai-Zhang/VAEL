@@ -134,7 +134,7 @@ def plot(fake_sample, epoch):
         plt.imshow(fake_sample[i])
         plt.axis('off')
     plt.tight_layout()
-    plt.savefig('./plot/target/epoch_%d.png' % epoch)
+    plt.savefig('./plot/UAV-view/epoch_%d.png' % epoch)
     return None
 
 def train_step_gen(args, one_hot_labels):
