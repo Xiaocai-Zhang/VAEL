@@ -36,8 +36,15 @@ You can run the following command to replicate the results:
 ```
 python3 vael.py --train=False
 ```
-## Training Model
-You can run the following command to train model.
+## Training the VAEL Model
+You can run the following command to train the VAEL model.
 ```
 python3 vael.py --train=True
+```
+## Training the C-WDCGAN-GP Model
+You can run the following command to train the C-WDCGAN-GP model.
+```
+cd ..
+cd c-wdcgan-gp
+python3 train.py
 ```
