@@ -31,8 +31,13 @@ gdown https://drive.google.com/uc?id=1lXP8EOSj4HVGa3PAyExQ2h4MQKLZ9H1T
 unzip save
 rm save.zip
 ```
-## Running Models
+## Running Model
 You can run the following command to replicate the results:
 ```
-python3 vael.py
+python3 vael.py --train=False
+```
+## Training Model
+You can run the following command to train model.
+```
+python3 vael.py --train=True
 ```
