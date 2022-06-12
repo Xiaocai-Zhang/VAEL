@@ -34,12 +34,12 @@ rm save.zip
 ## Running Model
 You can run the following command to replicate the results:
 ```
-python3 vael.py --train=False
+python3 vael.py
 ```
 ## Training the VAEL Model
 You can run the following command to train the VAEL model.
 ```
-python3 vael.py --train=True
+python3 vael.py --train True
 ```
 ## Training the C-WDCGAN-GP Model
 You can run the following command to train the C-WDCGAN-GP model.
