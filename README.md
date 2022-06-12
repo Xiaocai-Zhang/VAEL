@@ -12,6 +12,7 @@ Run the following commands to download data sets from Google cloud.
 ```
 gdown https://drive.google.com/uc?id=132b9OeYS_lWbTjYuKXvmqIhPobCAREnq
 unzip DVTR
+rm DVTR.zip
 ```
 ## Download the trained generator
 Run the following commands to download the trained generator.
@@ -19,6 +20,7 @@ Run the following commands to download the trained generator.
 cd c-wdcgan-gp
 gdown https://drive.google.com/uc?id=1u8IDDmBvVMHenREeUkklGdhZ3RskqB7I
 unzip save_gen
+rm save_gen.zip
 ```
 ## Download the trained VAEL model
 Run the following commands to download the trained VAEL model.
@@ -27,6 +29,7 @@ cd ..
 cd models
 gdown https://drive.google.com/uc?id=1lXP8EOSj4HVGa3PAyExQ2h4MQKLZ9H1T
 unzip save
+rm save.zip
 ```
 ## Running Models
 You can run the following command to replicate the results:
