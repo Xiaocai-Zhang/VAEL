@@ -80,14 +80,14 @@ def get_data(dim,reshape=True):
     x_train, x_val, y_train, y_val = train_test_split(x_train, y_train, test_size=0.1, random_state=42)
     return x_train, x_val, y_train, y_val, x_test, y_test
 
-def train_model(x_train, x_val, y_train, y_val, config, SaveModlFile):
+def train_model(x_train, x_val, y_train, y_val, args, SaveModlFile):
     '''
     function to train the model
     :param x_train: training input
     :param x_val: validation input
     :param y_train: training output
     :param y_val: validation output
-    :param config: config class
+    :param args: args
     :param SaveModlFile: path to save model
     :return: None
     '''
@@ -110,19 +110,19 @@ def train_model(x_train, x_val, y_train, y_val, config, SaveModlFile):
         layer.trainable = False
 
     # pre-training
-    model.compile(optimizer=RMSprop(learning_rate=config.lr), loss='categorical_crossentropy', metrics=['accuracy'])
-    model.fit(x=x_train, y=y_train, epochs=config.pre_epoch, batch_size=config.batchsize, verbose=1)
+    model.compile(optimizer=RMSprop(learning_rate=args.lr), loss='categorical_crossentropy', metrics=['accuracy'])
+    model.fit(x=x_train, y=y_train, epochs=args.pre_epoch, batch_size=args.batchsize, verbose=1)
 
-    for layer in model.layers[:config.l_f]:
+    for layer in model.layers[:args.l_f]:
         layer.trainable = False
-    for layer in model.layers[config.l_f:]:
+    for layer in model.layers[args.l_f:]:
         layer.trainable = True
 
-    model.compile(optimizer=RMSprop(learning_rate=config.lr, momentum=0.9), loss='categorical_crossentropy', metrics=['accuracy'])
+    model.compile(optimizer=RMSprop(learning_rate=args.lr, momentum=0.9), loss='categorical_crossentropy', metrics=['accuracy'])
     # fine-tuning
     mcp_save = callbacks.ModelCheckpoint(SaveModlFile, save_best_only=True, monitor='val_loss', mode='min')
 
-    model.fit(x=x_train, y=y_train, epochs=config.ft_epoch, batch_size=config.batchsize,
+    model.fit(x=x_train, y=y_train, epochs=args.ft_epoch, batch_size=args.batchsize,
               validation_data=(x_val, y_val), callbacks=[mcp_save], verbose=1)
     return None
 
@@ -137,16 +137,16 @@ def predict(x_test,SaveModlFile):
     predictions_test = model.predict(x_test)
     return predictions_test
 
-def ensemble(x_test_1,x_test_2,config):
+def ensemble(x_test_1,x_test_2,args):
     '''
     ensemble function
     :param x_test_1: test input for CNN1
     :param x_test_2: test input for CNN2
-    :param config: config class
+    :param args: args
     :return: ensemble prediction output
     '''
-    predictions_test_1 = predict(x_test_1, config.SaveModlFile_1)
-    predictions_test_2 = predict(x_test_2, config.SaveModlFile_2)
+    predictions_test_1 = predict(x_test_1, args.SaveModlFile_1)
+    predictions_test_2 = predict(x_test_2, args.SaveModlFile_2)
     predictions_test = (predictions_test_1 + predictions_test_2) / 2
     return predictions_test
 
