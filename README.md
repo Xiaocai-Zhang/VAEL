@@ -11,7 +11,7 @@ pip3 install -r requirements.txt
 Run the following commands to download data sets from Google cloud.
 ```
 gdown https://drive.google.com/uc?id=132b9OeYS_lWbTjYuKXvmqIhPobCAREnq
-unzip DVRT
+unzip DVTR
 ```
 ## Download the trained generator
 Run the following commands to download the trained generator.
