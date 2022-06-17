@@ -8,7 +8,7 @@ cd VAEL
 pip3 install -r requirements.txt
 ```
 ## Download the DVTR Dataset
-Run the following commands to download data sets from Google cloud.
+Run the following commands to download data sets from Google drive.
 ```
 gdown https://drive.google.com/uc?id=132b9OeYS_lWbTjYuKXvmqIhPobCAREnq
 unzip DVTR
