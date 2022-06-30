@@ -11,7 +11,7 @@ from dataset import Dataset
 from generate import generate_data
 import numpy as np
 import cv2
-from sklearn.metrics import classification_report,roc_auc_score
+from sklearn.metrics import classification_report,roc_auc_score,matthews_corrcoef
 
 
 
@@ -160,6 +160,7 @@ def evaluate(GroundTruth,Prediction):
     GroundTruth_Idx = np.argmax(GroundTruth, axis=1).tolist()
     Prediction_Idx = np.argmax(Prediction, axis=1).tolist()
     cr = classification_report(GroundTruth_Idx, Prediction_Idx, output_dict=True)
+    MCC = matthews_corrcoef(GroundTruth_Idx, Prediction_Idx)
     AUC = roc_auc_score(GroundTruth, Prediction, average='macro')
-    return round(cr['accuracy'],4),round(cr['macro avg']['precision'],4),round(cr['macro avg']['recall'],4),round(cr['macro avg']['f1-score'],4),AUC
+    return round(cr['accuracy'],4),round(cr['macro avg']['precision'],4),round(cr['macro avg']['recall'],4),round(cr['macro avg']['f1-score'],4),round(MCC,4),round(AUC,4)
 
